@@ -91,7 +91,7 @@ def make_scatter_plot(hydropathy):
             'title': 'Hydropathy'
         },
         'xaxis': {
-            'title': 'Postion'
+            'title': 'Position'
         }
     }
 

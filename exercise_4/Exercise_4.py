@@ -4,22 +4,22 @@ import plotly.graph_objects as go
 from collections import deque
 
 
-def make_lookup():
-    """Generates a dictionary with property-values of each amino acid for different physical properties.
-
-    Returns: a dictionary with property-values of each amino acid for different physical properties
-
-    """
-    names_of_properties = [
-        'Molecular Weight', 'Residue Weight', 'pka1', 'pka2', 'pkaX', 'pI',
-        'hydropathy index (Kyte-Doolittle method)', 'Accessible surface'
-    ]
-    df_properties = pd.read_csv('../data/amino_acid_properties.csv', index_col='1-letter code')
-    lookup = {}
-    for prop_name in names_of_properties:
-        property_series = df_properties[prop_name]
-        lookup[prop_name] = dict(property_series)
-    return lookup
+# def make_lookup():
+#     """Generates a dictionary with property-values of each amino acid for different physical properties.
+#
+#     Returns: a dictionary with property-values of each amino acid for different physical properties
+#
+#     """
+#     names_of_properties = [
+#         'Molecular Weight', 'Residue Weight', 'pka1', 'pka2', 'pkaX', 'pI',
+#         'hydropathy index (Kyte-Doolittle method)', 'Accessible surface'
+#     ]
+#     df_properties = pd.read_csv('../data/amino_acid_properties.csv', index_col='1-letter code')
+#     lookup = {}
+#     for prop_name in names_of_properties:
+#         property_series = df_properties[prop_name]
+#         lookup[prop_name] = dict(property_series)
+#     return lookup
 
 
 class Protein:
@@ -104,7 +104,7 @@ class Protein:
                 'title': self.prop
             },
             'xaxis': {
-                'title': 'Postion'
+                'title': 'position'
             }
         }
 
@@ -113,14 +113,15 @@ class Protein:
 
 
 if __name__ == '__main__':
-    ID = 'P32249'
-    look_up = make_lookup()
-    # prop = 'pI'
-    prop = 'Accessible surface'
+    pass
+    # ID = 'P32249'
+    # look_up = make_lookup()
+    # # prop = 'pI'
+    # # prop = 'Accessible surface'
     # prop = 'hydropathy index (Kyte-Doolittle method)'
-
-    prot = Protein(look_up)
-    seq = prot.get_data(ID)
-    prop_values = prot.map_property(prop)
-    # prop_values_smooted = prot.rolling_mean(prop, 15)
-    prot.make_plot()
+    #
+    # prot = Protein(look_up)
+    # seq = prot.get_data(ID)
+    # prop_values = prot.map_property(prop)
+    # # prop_values_smooted = prot.rolling_mean(prop, 5)
+    # prot.make_plot()
